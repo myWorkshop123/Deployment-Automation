@@ -26,3 +26,6 @@ main() {
     fi
 }
 
+cleanup(){
+    rm -rf build/App build/Frontend build/ETL release/*
+}

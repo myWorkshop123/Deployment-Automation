@@ -2,8 +2,6 @@
 # load constants
 source ./constants.sh
 
-
-
 function foo ()
 {
     echo "Arguments work just like script arguments: $*"
@@ -14,18 +12,9 @@ function foo ()
 }
 
 
-
-FILE=`zenity --multiple --file-selection --title="Select a File"`
-
-case $? in
-         0)
-                echo "\"$FILE\" selected.";;
-         1)
-                echo "No file selected.";;
-        -1)
-                echo "An unexpected error has occurred.";;
-esac
-
-
+#TODO 
+file_from="3/dist_equity/preview.html"
+file_to="2/apps/templates/pages/generic/generic_page.html"
+cat $file_from > $file_to
 
 
