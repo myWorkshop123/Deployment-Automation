@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# CONSTANTS
 VERSION='26.4.0'
 declare -a folder_zip=(
     [1]="ETL-package.zip"
@@ -7,7 +8,6 @@ declare -a folder_zip=(
     [3]="Frontend-archive.zip"
 )
 
-read -p "Enter the name of the repo side you want to deploy (1 for ETL, 2 For App, 3 for UI, all): " repo_side
 
 coloredEcho() {
     Black='\033[1;30m'       
@@ -19,20 +19,15 @@ coloredEcho() {
     Cyan='\033[1;36m'        
     White='\033[1;37m'       
 
+    echo -e "${!1}${2}"
 }
 processUI() {
     # unzip the Frontend-archive.zip and store it in 3
     unzip "${folder_zip[3]}" -d 3
-    # find the word buildversion= in 3/dist_equity/index.html and replace it with buildversion=$VERSION
-
-    # old commands
-    # sed -i '' "s/buildversion=[^>]*/buildversion=$VERSION/g" 3/dist_equity/index.html
-    # sed -i '' "s/buildversion=[^ ]*/buildversion=$VERSION/g" 3/dist_equity/preview.html
 
     # new commands 
-    sed  -i ''  "s/buildversion=[^>]*/buildversion=\"v$VERSION\"/g" 3/dist_equity/index.html 
-    sed  -i ''  "s/buildversion=[^>]*/buildversion=\"v$VERSION\"/g" 3/dist_equity/preview.html
-    
+    sed  -i '' "s/buildversion=[^>]*/buildversion=\"v$VERSION\"/g" 3/dist_equity/index.html 3/dist_equity/preview.html
+
     cd 3/ 
 
     zip -r ../final/UI-v${VERSION}.zip * -x ${folder_zip[3]} .DS_Store
@@ -99,22 +94,26 @@ processApp() {
     cd ..
 
 }
-if [[ $repo_side == "all" ]]; then
-    processUI
-    processApp
-    processETL
-else
-    IFS=',' read -ra all_reports <<< "$repo_side"
-    echo "You selected ${all_reports[@]}"
-    for each in "${all_reports[@]}"; do
-        if [[ $each == '1' ]]; then
-            processETL
-        fi
-        if [[ $each == '2' ]]; then
-            processApp
-        fi
-        if [[ $each == '3' ]]; then
-            processUI
-        fi
-    done
-fi
+
+main() {
+    read -p "Enter the name of the repo side you want to deploy (1 for ETL, 2 For App, 3 for UI, all): " repo_side
+    if [[ $repo_side == "all" ]]; then
+        processUI
+        processApp
+        processETL
+    else
+        IFS=',' read -ra all_reports <<< "$repo_side"
+        echo "You selected ${all_reports[@]}"
+        for each in "${all_reports[@]}"; do
+            if [[ $each == '1' ]]; then
+                processETL
+            fi
+            if [[ $each == '2' ]]; then
+                processApp
+            fi
+            if [[ $each == '3' ]]; then
+                processUI
+            fi
+        done
+    fi
+}
