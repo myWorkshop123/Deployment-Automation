@@ -1,7 +1,7 @@
 source ./constants.sh
 
 removeDependencies() {
-    read -p "$1 Select the dependencies folder to remove (1 for os, 2 for pip , 3 for all)" dep_folder
+    read -p "$1 Select the dependencies folder to remove (1 for os, 2 for pip , 3 for all) " dep_folder
     if [[ $1 == 'ETL' ]]; then
         if [[ $dep_folder == "1" ]]; then
             rm -rf 1/etl/Dependencies_os
