@@ -8,20 +8,31 @@ declare -a folder_zip=(
     [3]="Frontend-archive.zip"
 )
 
-
+# Function to print colored text
 coloredEcho() {
-    Black='\033[1;30m'       
-    Red='\033[1;31m'         
-    Green='\033[1;32m'       
-    Yellow='\033[1;33m'      
-    Blue='\033[1;34m'        
-    Purple='\033[1;35m'      
-    Cyan='\033[1;36m'        
-    White='\033[1;37m'       
+  local color=$1
+  local text=$2
+  local reset='\033[0m'
 
-    echo -e "${!1}${2}"
+  case $color in
+    "black") color_code='\033[0;30m' ;;
+    "red") color_code='\033[0;31m' ;;
+    "green") color_code='\033[0;32m' ;;
+    "yellow") color_code='\033[0;33m' ;;
+    "blue") color_code='\033[0;34m' ;;
+    "magenta") color_code='\033[0;35m' ;;
+    "cyan") color_code='\033[0;36m' ;;
+    "white") color_code='\033[0;37m' ;;
+    *) color_code=$reset ;;  # Default to no color if an invalid color is passed
+  esac
+
+  echo -e "${color_code}${text}${reset}"
 }
+
+# Example usage
+
 processUI() {
+    coloredEcho "red" "Processing UI" 
     # unzip the Frontend-archive.zip and store it in 3
     unzip "${folder_zip[3]}" -d 3
 
@@ -117,3 +128,4 @@ main() {
         done
     fi
 }
+
