@@ -1,4 +1,8 @@
 #!/bin/bash
+
+source ./utils.sh
+
+
 main() {
     read -p "Enter the name of the repo side you want to deploy (1 for ETL, 2 For App, 3 for UI, all): " repo_side
     if [[ $repo_side == "all" ]]; then
@@ -8,7 +12,7 @@ main() {
         processETL
     else
         IFS=',' read -ra all_reports <<< "$repo_side"
-        echo "You selected ${all_reports[@]}"
+        coloredEcho "red" "You selected ${all_reports[@]}"
         for each in "${all_reports[@]}"; do
             if [[ $each == '1' ]]; then
                 source ./ETL.sh
