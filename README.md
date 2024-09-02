@@ -17,7 +17,7 @@ Steps to Run
 
 ### TODO
 
-[ ] Download the Jira dump and test cases files 
+[x] Download the Jira dump and test cases files 
 [ ] Push files to s3 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ] release files 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ] Test cases and JIRA Dump 
