@@ -5,4 +5,8 @@ final/
 *.zip
 .DS_Store
 *.docx
-
+.idea/
+*.xlsx
+*.pyc
+credentials*
+token*
