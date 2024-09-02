@@ -17,4 +17,11 @@ Steps to Run
 
 ### TODO
 
-1. What happens if only the app is required to build , how to copy preview.html from UI when it is not required to build
+[ ] Download the Jira dump and test cases files 
+[ ] Push files to s3 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ] release files 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ] Test cases and JIRA Dump 
+
+[ ] Download the deployment doc 
+[ ] Make changes to the deployment doc
+[ ] Send a mail
