@@ -21,5 +21,11 @@ Download the releases from github and place it inside the build folder
 	- [ ] Test cases and JIRA Dump 
 
 - [ ] Download the deployment doc 
-- [ ] Make changes to the deployment doc
+
+- [ ] Make changes to the deployment doc 
+	- [ ] Mentions of the tickets table
+	- [ ] Changes to the version
+	- [ ] Changes to the path
+	- [ ] Changes to the steps 
+	- [ ] Changes to the rollback
 - [ ] Send a mail
