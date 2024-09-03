@@ -1,13 +1,11 @@
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
 import os.path
 
-SCOPES = ["https://www.googleapis.com/auth/drive.metadata.readonly",
-          "https://www.googleapis.com/auth/drive.file",
-          "https://www.googleapis.com/auth/drive.readonly",
-          "https://www.googleapis.com/auth/drive"
-          ]
+from constant import G_API_SCOPES
+from google_auth_oauthlib.flow import InstalledAppFlow
+
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+
 
 def credentials():
     creds = None
@@ -15,14 +13,14 @@ def credentials():
     # created automatically when the authorization flow completes for the first
     # time.
     if os.path.exists("token.json"):
-        creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+        creds = Credentials.from_authorized_user_file("token.json", G_API_SCOPES)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                "credentials.json", SCOPES
+                "credentials.json", G_API_SCOPES
             )
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run

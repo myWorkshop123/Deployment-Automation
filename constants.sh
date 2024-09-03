@@ -1,11 +1,11 @@
 #!/bin/bash
 
-VERSION='30.1.1'
+export VERSION='30.1.1'
 
-ROOT_DIR=$(pwd)
+export ROOT_DIR=$(pwd)
 
-BUILD_DIR="${ROOT_DIR}/build"
-RELEASE_DIR="${ROOT_DIR}/release"
+export BUILD_DIR="${ROOT_DIR}/build"
+export RELEASE_DIR="${ROOT_DIR}/release"
 
 APP_DIR="App-package.zip"
 ETL_DIR="ETL-package.zip"
