@@ -11,4 +11,4 @@ final/
 credentials*
 token*
 .env
-
+__pycache__/
