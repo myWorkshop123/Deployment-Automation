@@ -10,3 +10,5 @@ final/
 *.pyc
 credentials*
 token*
+.env
+
