@@ -36,6 +36,10 @@ Download the releases from github and place it inside the build folder
 
 - [ ] Send a mail using outlook api
 
+  - [x] Write function to trigger outlook mail
+  - [ ] Prepare mail body
+    - [ ] Mention S3 URI Links of Test Cases , Jira Dump and Build Folders
+
 ### DOCS
 
 [TODO](https://docs.google.com/document/d/1t1WGxcrz6IO44S0I_R4W11g7n8WmIjHz1OGQTxWQtE8/edit)

@@ -93,3 +93,13 @@ AWS_DEFAULT_ACL = CONSTANT(
 BUILD_FOLDER_S3_LOCATION = CONSTANT(
     "test-folder/", "Location of the build folder in S3"
 ).value
+
+
+# Outlook Email Constants
+class OUTLOOK(object):
+    SMTP_SERVER = "smtp.office365.com"
+    SMTP_PORT = 587
+    SENDER_EMAIL = os.getenv("OUTLOOK_SENDER_EMAIL", "")
+    SENDER_PASSWORD = os.getenv("OUTLOOK_SENDER_PASSWORD", "")
+    RECEIEVER_EMAIL = ["kartik.kumar@galepartners.com"]
+    CC_EMAIL = ["fushionblade888@gmail.com"]
