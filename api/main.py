@@ -1,12 +1,29 @@
 import constant
 from download_files import export_file, get_files
+from mail import send_mail
 from s3.s3_utility import S3_Utility
+
+
+def prepare_mail(resource_links):
+    Subject = constant.OUTLOOK.SUBJECT
+    Body = constant.OUTLOOK.BODY
+
+    for resource, url in resource_links.items():
+        Body += f"\n\n{resource}: {url}"
+
+    send_mail(Subject, Body)
 
 
 def upload_release_files_to_s3():
     s3 = S3_Utility()
-    s3.upload_directory(constant.RELEASE_DIR, constant.BUILD_FOLDER_S3_LOCATION)
-    print("done")
+    folder_path = f"BUILD_RELEASE-v{constant.VERSION}"
+    s3.create_folder(folder_path, constant.BUILD_FOLDER_S3_LOCATION)
+    file_dict = s3.upload_directory(
+        constant.RELEASE_DIR,
+        f"{constant.BUILD_FOLDER_S3_LOCATION}/{folder_path}",
+    )
+    print("preparing to send mail")
+    prepare_mail(file_dict)
 
 
 def main():
@@ -31,5 +48,5 @@ def main():
 
 
 if __name__ == "__main__":
-    # main()
+    main()
     upload_release_files_to_s3()

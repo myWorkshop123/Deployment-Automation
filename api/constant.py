@@ -27,7 +27,7 @@ GOOGLE_DRIVE_BUILD_FOLDER = CONSTANT(
 ).value
 
 
-JIRA_DUMP = CONSTANT("JIRA DUMP", "Name of the JIRA_DUMP file without extension").value
+JIRA_DUMP = CONSTANT("JIRA-DUMP", "Name of the JIRA_DUMP file without extension").value
 TESTCASES = CONSTANT("Testcases", "Name of the Testcases file without extension").value
 DEPLOYMENT_DOC = CONSTANT(
     "DeploymentInstructions", "Name of the Testcases file without extension"
@@ -89,9 +89,11 @@ AWS_DEFAULT_ACL = CONSTANT(
     os.getenv("AWS_DEFAULT_ACL", ""), "AWS S3 Endpoint URL"
 ).value
 
+AWS_REGION = CONSTANT(os.getenv("AWS_REGION", ""), "AWS Bucket Region").value
+
 
 BUILD_FOLDER_S3_LOCATION = CONSTANT(
-    "test-folder/", "Location of the build folder in S3"
+    "test-folder", "Location of the build folder in S3"
 ).value
 
 
@@ -103,3 +105,5 @@ class OUTLOOK(object):
     SENDER_PASSWORD = os.getenv("OUTLOOK_SENDER_PASSWORD", "")
     RECEIEVER_EMAIL = ["kartik.kumar@galepartners.com"]
     CC_EMAIL = ["fushionblade888@gmail.com"]
+    SUBJECT = f"BMO Capital Markets | Deployment to SIT (v{VERSION}) "
+    BODY = f"Hi @Kartik \nPlease deploy version v{VERSION} to BMO SIT AND UAT"

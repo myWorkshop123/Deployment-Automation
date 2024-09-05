@@ -53,6 +53,7 @@ class S3_Utility:
         if not self.connection_formed:
             logging.error("S3 connection not formed. Cannot upload files.")
             return
+        file_url_map = {}  # Dictionary to store file names and their S3 URLs
 
         # Iterate through the directory and upload each file
         for root, dirs, files in os.walk(local_directory):
@@ -69,8 +70,37 @@ class S3_Utility:
                     self.s3res.Bucket(self.aws_bucket_name).upload_file(
                         local_path, s3_key
                     )
+
+                    file_url_new = f"https://{constant.AWS_REGION}.console.aws.amazon.com/s3/object/{self.aws_bucket_name}?region={constant.AWS_REGION}&prefix={s3_key}"
+                    file_url_map[filename] = file_url_new
+
                     logging.info(
                         f"Uploaded {local_path} to s3://{self.aws_bucket_name}/{s3_key}"
                     )
                 except ClientError as e:
                     logging.error(f"Failed to upload {local_path} to S3: {e}")
+        return file_url_map
+
+    def create_folder(self, folder_name, s3_location):
+        """
+        Creates a folder in the specified location in the S3 bucket.
+
+        :param folder_name: The name of the folder to create.
+        :param s3_location: The location in the S3 bucket where the folder should be created.
+        """
+        if not self.connection_formed:
+            logging.error("S3 connection not formed. Cannot create folder.")
+            return
+        # Construct the full folder path (S3 key) ending with "/"
+        s3_folder_path = os.path.join(s3_location, folder_name).replace("\\", "/") + "/"
+
+        try:
+            # Upload an empty object with the folder path
+            sample = self.s3res.Bucket(self.aws_bucket_name).put_object(
+                Key=s3_folder_path
+            )
+            logging.info(
+                f"Folder '{s3_folder_path}' created in S3 bucket '{self.aws_bucket_name}'."
+            )
+        except ClientError as e:
+            logging.error(f"Failed to create folder '{s3_folder_path}' in S3: {e}")

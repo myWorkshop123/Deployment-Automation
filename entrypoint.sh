@@ -30,6 +30,12 @@ main() {
     fi
 }
 
+initiate_build() { 
+    main 
+    cd api
+    python main.py
+}
+
 cleanup(){
     rm -rf build/App build/Frontend build/ETL release/*
 }

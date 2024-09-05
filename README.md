@@ -34,11 +34,17 @@ Download the releases from github and place it inside the build folder
   - [ ] Changes to the steps
   - [ ] Changes to the rollback
 
-- [ ] Send a mail using outlook api
+- [x] Send a mail using outlook api
 
   - [x] Write function to trigger outlook mail
-  - [ ] Prepare mail body
-    - [ ] Mention S3 URI Links of Test Cases , Jira Dump and Build Folders
+  - [x] Prepare mail body
+    - [x] Mention S3 URI Links of Test Cases , Jira Dump and Build Folders
+
+- [x] Happy Path Testing
+
+- [ ] Handle edge cases
+
+  - [ ] Case where UI Build is not sent
 
 ### DOCS
 
