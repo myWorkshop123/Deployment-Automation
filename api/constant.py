@@ -89,8 +89,6 @@ AWS_DEFAULT_ACL = CONSTANT(
     os.getenv("AWS_DEFAULT_ACL", ""), "AWS S3 Endpoint URL"
 ).value
 
-AWS_REGION = CONSTANT(os.getenv("AWS_REGION", ""), "AWS Bucket Region").value
-
 
 BUILD_FOLDER_S3_LOCATION = CONSTANT(
     "test-folder", "Location of the build folder in S3"

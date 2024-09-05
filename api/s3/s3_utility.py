@@ -71,7 +71,7 @@ class S3_Utility:
                         local_path, s3_key
                     )
 
-                    file_url_new = f"https://{constant.AWS_REGION}.console.aws.amazon.com/s3/object/{self.aws_bucket_name}?region={constant.AWS_REGION}&prefix={s3_key}"
+                    file_url_new = f"https://{constant.AWS_DEFAULT_REGION}.console.aws.amazon.com/s3/object/{self.aws_bucket_name}?region={constant.AWS_DEFAULT_REGION}&prefix={s3_key}"
                     file_url_map[filename] = file_url_new
 
                     logging.info(
