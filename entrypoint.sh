@@ -20,7 +20,10 @@ main() {
             fi
             if [[ $each == '2' ]]; then
                 source ./App.sh
+                source ./UI.sh
+                processUI
                 processApp
+                rm -rf "$RELEASE_DIR"/"UI"-v${VERSION}.zip
             fi
             if [[ $each == '3' ]]; then
                 source ./UI.sh
@@ -32,7 +35,7 @@ main() {
 
 initiate_build() { 
     main 
-    cd api
+    cd api || exit
     python main.py
 }
 

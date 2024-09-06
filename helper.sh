@@ -26,7 +26,7 @@ unzipFolder() {
 
 }
 zipFolder() {
-    cd $1
-    zip -r $RELEASE_DIR/$2-v${VERSION}.zip * -x $1 .DS_Store
-    cd $ROOT_DIR
+    cd "$1" || exit || exit
+    zip -r "$RELEASE_DIR"/"$2"-v${VERSION}.zip * -x "$1" .DS_Store
+    cd "$ROOT_DIR" || exit
 }

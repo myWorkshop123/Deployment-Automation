@@ -10,7 +10,7 @@ Download the releases from github and place it inside the build folder
 
 2. Inside the bash terminal
 
-   `source entrypoint && main`
+   `source entrypoint && initiate_build`
 
 ### TODO
 
@@ -42,9 +42,9 @@ Download the releases from github and place it inside the build folder
 
 - [x] Happy Path Testing
 
-- [ ] Handle edge cases
+- [x] Handle edge cases
 
-  - [ ] Case where UI Build is not sent
+  - [x] Case where UI Build is not sent
 
 ### DOCS
 
