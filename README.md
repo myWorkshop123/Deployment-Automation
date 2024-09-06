@@ -30,7 +30,7 @@ Download the releases from github and place it inside the build folder
   - [x] Test cases and JIRA Dump
   - [x] Deployment Doc
 
-- [x] Make changes to the deployment doc
+- [ ] Make changes to the deployment doc
 
 - [x] Send a mail using outlook api
 
