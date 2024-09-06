@@ -14,6 +14,10 @@ Download the releases from github and place it inside the build folder
 
 ### TODO
 
+- [x] Create build from packages
+
+  - [x] Make version changes to the package files
+
 - [x] Download the files from Google Drive
 
   - [x] Test Cases
